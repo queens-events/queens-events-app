@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 // QLICKER
-// Author: Enoch T <me@enocht.am>
+// Author: Hayden Pfeiffer <hayden.pfeiffer@queensu.ca>
 //
 // routes.app-test.js: testing app navigation by routes
 

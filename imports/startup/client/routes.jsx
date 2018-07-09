@@ -1,5 +1,5 @@
-// QLICKER
-// Author: Enoch T <me@enocht.am>
+// QUEENS EVENTS
+// Author: Hayden Pfeiffer <hayden.pfeiffer@queensu.ca>
 //
 // routes.jsx: iron-router routes
 
