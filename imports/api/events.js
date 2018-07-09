@@ -37,6 +37,7 @@ if (Meteor.isServer) {
 Meteor.methods({
 
   'events.insert' (event) {
+    
     if (event._id) return Meteor.call('events.update', event)
 
     event.createdAt = new Date()
@@ -44,7 +45,7 @@ Meteor.methods({
     check(event, eventPattern)
 
     const id = Events.insert(event)
-    
+
     if (id) return Events.findOne({ _id: id })
     else throw Error('Unable to insert event')
   },
