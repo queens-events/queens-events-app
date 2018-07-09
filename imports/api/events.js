@@ -14,7 +14,8 @@ const eventPattern = {
   _id: String,
   url: String,
   imageUrl: String,
-  description: String
+  description: String,
+  createdAt: Date
 }
 
 // Create Event class
@@ -31,3 +32,31 @@ if (Meteor.isServer) {
     return Events.find()
   }) 
 }
+
+// Meteor methods for events object
+Meteor.methods({
+
+  'events.insert' (event) {
+    if (event._id) return Meteor.call('events.update', event)
+
+    event.createdAt = new Date()
+
+    check(event, eventPattern)
+
+    const id = Events.insert(event)
+    
+    if (id) return Events.findOne({ _id: id })
+    else throw Error('Unable to insert event')
+  },
+
+  'events.update' (event) {
+    check(event, eventPattern)
+
+    const updatedEvent = Events.update({ _id: event._id }, {
+      $set: _.omit(event, '_id')
+    })
+
+    if (updatedEvent) return event
+    else throw Error('Unable to update event')
+  }
+})
