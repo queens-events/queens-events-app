@@ -12,7 +12,6 @@ import { _ } from 'underscore'
 // Events collection pattern
 const eventPattern = {
   _id: String,
-  name: String,
   url: String,
   imageUrl: String,
   description: String,
@@ -43,14 +42,11 @@ Meteor.methods({
 
     event.createdAt = new Date()
 
-    
+    check(event, eventPattern)
 
     const id = Events.insert(event)
 
-    if (id) {
-      console.log(id)
-      return Events.findOne({ _id: id })
-    }
+    if (id) return Events.findOne({ _id: id })
     else throw Error('Unable to insert event')
   },
 
