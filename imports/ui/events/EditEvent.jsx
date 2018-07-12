@@ -6,7 +6,7 @@
 import React, { Component } from 'react'
 import { _ } from 'underscore'
 
-import { Events } from '../api/events'
+import { Events } from '../../api/events'
 
 export class EditEvent extends Component {
   constructor () {

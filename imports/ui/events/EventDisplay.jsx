@@ -11,13 +11,12 @@ class _EventsDisplay extends Component {
         {
           this.props.events.map(event => {
             return(
-              <div>
-                {event._id}
-                {event.name}
-                {event._url}
-                {event._imageUrl}
-                {event.description}
-                {event.createdAt}
+              <div key={event._id}>
+                {'Id: ' + event._id}
+                {' Name: ' + event.name}
+                {' Url: ' + event._url}
+                {' image: ' + event._imageUrl}
+                {' description: ' + event.description}
               </div>
             )
           })
@@ -30,9 +29,9 @@ class _EventsDisplay extends Component {
 export const EventsDisplay = createContainer(() => {
   const handle = Meteor.subscribe('events.all')
 
-  const events = Events.find()
-                
+  const events = Events.find().fetch()    
   return {
+    ready: !handle.ready(),
     events: events
   }
 }, _EventsDisplay)

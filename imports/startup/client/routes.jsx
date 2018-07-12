@@ -14,9 +14,9 @@ Router.configure({
 })
 
 import { EditEvent } from '../../ui/events/EditEvent'
-import { EventDisplay } from '../../ui/events/EventDisplay'
+import { EventsDisplay } from '../../ui/events/EventDisplay'
 Router.route('/', function () {
-  mount(AppLayout, { content: <div><EditEvent /><EventDisplay /></div> })
+  mount(AppLayout, { content: <div><EditEvent /><EventsDisplay /></div> })
 }, {
   name: 'home'
 })
